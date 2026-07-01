@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="56" fill="#22C55E"/>
+  <!-- Music note -->
+  <g transform="translate(28, 20) scale(0.85)">
+    <path d="M52 8L22 16V64C18 62 12 62 8 65C3 69 2 76 6 80C10 84 18 83 22 79C25 76 26 72 26 68V28L48 22V56C44 54 38 54 34 57C29 61 28 68 32 72C36 76 44 75 48 71C51 68 52 64 52 60V8Z" fill="white"/>
+  </g>
+</svg>

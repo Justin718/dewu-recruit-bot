@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>得物AI学者信息平台 | 研究型实习生 · 推荐系统</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- ======== 侧边导航 ======== -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">&#129504;</div>
+                    <div>
+                        <span class="logo-title">AI学者平台</span>
+                        <span class="logo-sub">得物 · 推荐系统方向</span>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a class="nav-item active" data-page="dashboard"><i class="fas fa-tachometer-alt"></i><span>数据看板</span></a>
+                <a class="nav-item" data-page="projects"><i class="fas fa-flask"></i><span>研究项目</span></a>
+                <a class="nav-item" data-page="architecture"><i class="fas fa-layer-group"></i><span>技术架构</span></a>
+                <a class="nav-item" data-page="knowledge"><i class="fas fa-project-diagram"></i><span>知识图谱</span></a>
+                <a class="nav-item" data-page="feishu"><i class="fas fa-robot"></i><span>飞书集成</span></a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="scholar-badge">
+                    <div class="scholar-avatar">&#128100;</div>
+                    <div>
+                        <span class="scholar-name">AI Scholar</span>
+                        <span class="scholar-role">研究型实习生</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ======== 主内容区 ======== -->
+        <main class="main-content">
+            <!-- 顶部栏 -->
+            <header class="topbar">
+                <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+                <div class="topbar-title">
+                    <h1 id="pageTitle">数据看板</h1>
+                    <p class="topbar-desc" id="pageDesc">实时监控 · 项目进展 · 核心指标一览</p>
+                </div>
+                <div class="topbar-actions">
+                    <span class="status-dot pulse"></span>
+                    <span class="status-text">系统运行中</span>
+                    <span class="topbar-time" id="topbarTime"></span>
+                </div>
+            </header>
+
+            <!-- ========== 数据看板页面 ========== -->
+            <section class="page active" id="page-dashboard">
+                <!-- 核心KPI -->
+                <div class="stats-grid" id="summaryCards"></div>
+
+                <!-- 图表行1 -->
+                <div class="charts-row">
+                    <div class="chart-card large">
+                        <div class="card-header"><h3><i class="fas fa-chart-line"></i> CTR日趋势（近30天）</h3><span class="badge success">实时更新</span></div>
+                        <div class="card-body"><canvas id="ctrTrendChart"></canvas></div>
+                    </div>
+                    <div class="chart-card">
+                        <div class="card-header"><h3><i class="fas fa-puzzle-piece"></i> 召回路由贡献</h3></div>
+                        <div class="card-body"><canvas id="recallChart"></canvas></div>
+                    </div>
+                </div>
+
+                <!-- 图表行2 -->
+                <div class="charts-row">
+                    <div class="chart-card">
+                        <div class="card-header"><h3><i class="fas fa-layer-group"></i> 品类CTR对比</h3></div>
+                        <div class="card-body" id="categoryCtrChart"></div>
+                    </div>
+                    <div class="chart-card large">
+                        <div class="card-header"><h3><i class="fas fa-flask"></i> 在线实验监控</h3></div>
+                        <div class="card-body" id="experimentTable"></div>
+                    </div>
+                </div>
+
+                <!-- 时间线 -->
+                <div class="chart-card full-width">
+                    <div class="card-header"><h3><i class="fas fa-stream"></i> 项目时间线</h3></div>
+                    <div class="card-body" id="projectTimeline"></div>
+                </div>
+            </section>
+
+            <!-- ========== 研究项目页面 ========== -->
+            <section class="page" id="page-projects">
+                <div class="project-grid" id="projectGrid"></div>
+            </section>
+
+            <!-- ========== 技术架构页面 ========== -->
+            <section class="page" id="page-architecture">
+                <div class="arch-container" id="archContainer"></div>
+            </section>
+
+            <!-- ========== 知识图谱页面 ========== -->
+            <section class="page" id="page-knowledge">
+                <div class="kg-container">
+                    <div class="kg-canvas-wrapper">
+                        <div class="kg-legend">
+                            <span class="legend-item"><span class="dot" style="background:#3b82f6"></span>核心领域</span>
+                            <span class="legend-item"><span class="dot" style="background:#10b981"></span>算法技术</span>
+                            <span class="legend-item"><span class="dot" style="background:#ec4899"></span>工具平台</span>
+                        </div>
+                        <svg id="kgSvg" width="100%" height="550"></svg>
+                    </div>
+                    <div class="kg-detail-panel" id="kgDetailPanel">
+                        <h4><i class="fas fa-info-circle"></i> 节点详情</h4>
+                        <div id="nodeDetail"><p class="hint">点击图谱中的节点查看详细信息</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== 飞书集成页面 ========== -->
+            <section class="page" id="page-feishu">
+                <div class="feishu-container">
+                    <div class="feishu-header-card">
+                        <div class="feishu-bot-info">
+                            <div class="bot-avatar">&#129302;</div>
+                            <div>
+                                <h2>得物AI学者助手</h2>
+                                <p>智能推送 · 实验告警 · 日报生成 · 论文追踪</p>
+                            </div>
+                        </div>
+                        <div class="feishu-status">
+                            <span class="status-dot pulse"></span>
+                            <span>已连接飞书</span>
+                        </div>
+                    </div>
+                    <div class="feishu-features" id="feishuFeatures"></div>
+                    <div class="chart-card">
+                        <div class="card-header"><h3><i class="fas fa-comments"></i> 飞书消息流</h3><span class="badge info">最近消息</span></div>
+                        <div class="card-body" id="feishuMessages"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

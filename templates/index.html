@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>得物校招AI问答机器人</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 侧边栏展开按钮（固定定位，独立于侧边栏） -->
+        <button class="sidebar-expand-btn" id="sidebarExpandBtn" title="展开侧边栏">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- 侧边栏 -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <img src="/static/img/favicon.ico" alt="得物" class="logo-img">
+                    <span>得物校招助手</span>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle" title="收起侧边栏">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+            
+            <div class="sidebar-actions">
+                <button class="new-chat-btn" id="newChatBtn">
+                    <i class="fas fa-plus"></i> 新对话
+                </button>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">
+                    <i class="fas fa-folder"></i> 话题分类
+                </h3>
+                <div class="category-list" id="categoryList">
+                    <!-- 动态加载 -->
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">
+                    <i class="fas fa-history"></i> 历史记录
+                </h3>
+                <div class="history-list" id="historyList">
+                    <p class="empty-hint">暂无历史记录</p>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-info">
+                    <p>得物校招 9 大主题</p>
+                    <p>已收录 17+ 高频问题</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 主聊天区域 -->
+        <main class="main-content">
+            <!-- 顶部栏 -->
+            <header class="chat-header">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-info">
+                    <h1>得物校招AI问答机器人</h1>
+                    <p class="header-subtitle">得物校园招聘 · 答疑解惑 · 伴你上岸</p>
+                </div>
+                <div class="header-actions">
+                    <button class="header-btn" id="clearChatBtn" title="清空对话">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- 聊天窗口 -->
+            <div class="chat-window" id="chatWindow">
+                <!-- 欢迎界面 -->
+                <div class="welcome-screen" id="welcomeScreen">
+                    <div class="welcome-icon">
+                        <img src="/static/img/favicon.ico" alt="得物" class="welcome-logo-img">
+                    </div>
+                    <h2>你好，我是得物校招小助手！</h2>
+                    <p>无论是网申、简历、面试还是Offer选择，我都能帮你解答</p>
+                    
+                    <div class="quick-questions" id="quickQuestions">
+                        <p class="quick-title">💡 试试问我这些问题：</p>
+                        <!-- 动态加载 -->
+                    </div>
+                </div>
+
+                <!-- 消息列表 -->
+                <div class="messages-container" id="messagesContainer">
+                    <!-- 消息动态渲染 -->
+                </div>
+
+                <!-- 输入指示器 -->
+                <div class="typing-indicator" id="typingIndicator" style="display:none;">
+                    <div class="typing-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <span>正在思考...</span>
+                </div>
+            </div>
+
+            <!-- 输入区域 -->
+            <div class="input-area">
+                <div class="input-container">
+                    <textarea 
+                        id="messageInput" 
+                        placeholder="输入你的校招问题，例如：得物面试有几轮？"
+                        rows="1"
+                        autofocus
+                    ></textarea>
+                    <button class="send-btn" id="sendBtn" title="发送消息">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <p class="input-hint">
+                    <i class="fas fa-info-circle"></i>
+                    支持自然语言提问，例如："简历怎么写"、"内推有用吗"
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

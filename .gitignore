@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sensitive data
+boss_records_*.json
+create_*.json
+field_*.json
+f*.json
+screening_data.json
+scholar_data.json
+scholar_data_generator.py
+update_grade.json
+_body.json
+_params.json
+
+# Scripts
+_gen2.py
+data_generator.py
+
+# Images (non-essential)
+feishu_qr*.png
+
+# Cloud Studio
+.codebuddy/
+
+# OS
+.DS_Store
+Thumbs.db
